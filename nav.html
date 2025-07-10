@@ -1,0 +1,32 @@
+<div class="font-size-controls">
+  <button onclick="setFontSize('font-small')" style="font-family: sans-serif;">A-</button>
+  <button onclick="setFontSize('font-medium')" style="font-family: sans-serif;">A</button>
+  <button onclick="setFontSize('font-large')" style="font-family: sans-serif;">A+</button>
+</div>
+
+<nav>
+  <a href="index.html">HOME</a>
+  <a href="about.html">ABOUT</a>
+  <a href="work.html">WORK</a>
+  <a href="cv.html">C.V.</a>
+  <a href="contact.html">ConTACT</a>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let currentPage = window.location.pathname.split('/').pop();
+
+    if (!currentPage) {
+      currentPage = 'index.html'; // fallback for root path
+    }
+
+    const navLinks = document.querySelectorAll('nav a');
+
+    navLinks.forEach(link => {
+      let linkPage = link.getAttribute('href').split('?')[0].split('#')[0];
+      if (linkPage === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>

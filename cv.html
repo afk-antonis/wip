@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CV and gallery of antonis antoniadis">
+  <title>cv</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="assets/css/lightbox.css" rel="stylesheet">
+
+  <style>
+    header {
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto 0 auto;
+      text-align: left;
+      padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+  <script>
+    fetch("nav.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("nav-container").innerHTML = data;
+      });
+  </script>
+
+  <main>
+    <ul class="image-gallery">
+      <li>
+        <a href="assets/img/hyper emotional.jpg" data-lightbox="work" data-title="Hyper Emotional Family @ Berliner Ringtheater © Max Bohm" title="© Max Bohm">
+          <img src="assets/img/hyperthumb.jpg" alt="Hyper Emotional Family @ Berliner Ringtheater" title="© Max Bohm" height="200">
+        </a>
+      </li>
+      <li>
+        <a href="assets/img/letzterstand.jpeg" data-lightbox="work" data-title="Letzter Stand I: allos autos @ Volksbühne © Ackermann-Simonow-Kahn" title="© Ackermann-Simonow-Kahn">
+          <img src="assets/img/letzterstandthumb.jpg" alt="Letzter Stand I: allos autos @ Volksbühne" title="© Ackermann-Simonow-Kahn" height="200">
+        </a>
+      </li>
+      <li>
+        <a href="assets/img/hinauf.jpg" data-lightbox="work" data-title="Hinauf zu den Sternen @ Theater Freiburg © Laura Nickel" title="© Laura Nickel">
+          <img src="assets/img/hinaufthumb.jpg" alt="Hinauf zu den Sternen @ Theater Freiburg" title="© Laura Nickel" height="200">
+        </a>
+      </li>
+      <li>
+        <a href="assets/img/woyzeck.jpg" data-lightbox="work" data-title="Woyzeck @ Theater Freiburg © Laura Nickel" title="© Laura Nickel">
+          <img src="assets/img/woyzeckthumb.jpg" alt="Woyzeck @ Theater Freiburg" title="© Laura Nickel" height="200">
+        </a>
+      </li>
+      <li>
+        <a href="assets/img/gopnik.jpg" data-lightbox="work" data-title="Backstage @ Theater Freiburg © Brit Schilling" title="© Brit Schilling">
+          <img src="assets/img/gopnikthumb.jpg" alt="Backstage @ Theater Freiburg" title="© Brit Schilling" height="200">
+        </a>
+      </li>
+      <li>
+        <a href="assets/img/norway.jpg" data-lightbox="work" data-title="norway.today @ Theater Freiburg © Marc Doradzillo" title="© Marc Doradzillo">
+          <img src="assets/img/norwaythumb.jpg" alt="norway.today @ Theater Freiburg" title="© Marc Doradzillo" height="200">
+        </a>
+      </li>
+      <li>
+        <a href="assets/img/dimiela.JPG" data-lightbox="work" data-title="Wildwuchs Festival @ Volksbühne" title="">
+          <img src="assets/img/dimielathumb.JPG" alt="Wildwuchs Festival @ Volksbühne" height="200">
+        </a>
+      </li>
+      <li>
+        <a href="assets/img/enquete.jpg" data-lightbox="work" data-title="enquête @ École Jacques Lecoq © Alexandra de Laminne" title="© Alexandra de Laminne">
+          <img src="assets/img/enquetethumb.jpg" alt="enquête @ École Jacques Lecoq" title="© Alexandra de Laminne" height="200">
+        </a>
+      </li>
+      <li>
+        <a href="assets/img/lecoqback.jpg" data-lightbox="work" data-title="@ École Jacques Lecoq © Alexandra de Laminne" title="© Alexandra de Laminne">
+          <img src="assets/img/lecoqbackthumb.jpg" alt="École Jacques Lecoq" title="© Alexandra de Laminne" height="200">
+        </a>
+      </li>
+    </ul>
+
+    <header>   
+      <h1>CV</h1>
+      <p>
+        <b>2015 – 2017</b> Freie Universität Berlin, theatre and film studies<br />
+        <b>2017 – 2021</b> Universität der Künste Berlin, acting<br />
+        <b>2021 – 2024</b> Member of the ensemble at Theater Freiburg<br />
+        <b>2024 – 2025</b> École internationale de théâtre Jacques Lecoq, Avignon<br /><br />
+        <b>2019</b> – Recipient of a scholarship from the German Academic Scholarship Foundation<br />
+        <b>2023</b> – Nominated as best up-and-coming artist in <i>Theater Heute</i> magazine
+      </p>
+    </header>
+  </main>
+
+  <div class="blood-bar-wrapper">
+    <div class="blood-bar-container">
+      <div class="blood-bar-fill" id="bloodFill">
+        <span class="blood-percentage" id="bloodPercent">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/lightbox-plus-jquery.js"></script>
+  <script>
+    lightbox.option({
+      'resizeDuration': 0,
+      'imageFadeDuration': 0,
+      'fadeDuration': 0,
+      'wrapAround': true,
+      'albumLabel': "%1 of %2"
+    });
+
+    const fill = document.getElementById("bloodFill");
+    const percent = document.getElementById("bloodPercent");
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.min(100, Math.round((scrollTop / docHeight) * 100));
+
+      fill.style.width = scrollPercent + "%";
+      percent.textContent = scrollPercent + "%";
+    });
+  </script>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("assets/includes/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+    <script>
+  function setFontSize(sizeClass) {
+    document.body.classList.remove('font-small', 'font-medium', 'font-large');
+    document.body.classList.add(sizeClass);
+  }
+
+  // Optional: Set default
+  window.addEventListener("DOMContentLoaded", () => {
+    setFontSize('font-medium');
+  });
+</script>
+<script src="js/nav-active.js" defer></script>
+
+</body>
+</html>

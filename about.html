@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="about antonis antoniadis">
+  <title>about</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div class="font-size-controls">
+  <button onclick="setFontSize('font-small')">A−</button>
+  <button onclick="setFontSize('font-medium')">A</button>
+  <button onclick="setFontSize('font-large')">A+</button>
+  </div>
+
+  <div id="nav-container"></div>
+  <script>
+    fetch("nav.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("nav-container").innerHTML = data;
+      });
+  </script>
+  <noscript>
+    <p>Please enable JavaScript to view the navigation menu.</p>
+  </noscript>
+
+  <main style="padding: 20px;">
+    <img 
+      src="assets/img/merenata.jpeg" 
+      alt="athena" 
+      title="© Renata Kotti-Domprets" 
+      width="300" 
+      height="auto" 
+      style="display: block; margin-bottom: 20px;"
+    >
+
+    <header>
+      <h1>antonis antoniadis</h1>
+    </header>
+
+    <section>
+      <p>
+        I grew up in Athens, lived in Germany and France, where I studied acting and theatrical creation.<br>
+        I have worked as an actor in ensemble theatres, in cinema and as a<br>
+        freelancer. I have also made music for performances and translated.<br>
+      </p>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("assets/includes/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+
+  </script>
+  <noscript>
+    <p>Please enable JavaScript to view the footer content.</p>
+  </noscript>
+  <script>
+  function setFontSize(sizeClass) {
+    document.body.classList.remove('font-small', 'font-medium', 'font-large');
+    document.body.classList.add(sizeClass);
+  }
+
+  // Optional: Set default
+  window.addEventListener("DOMContentLoaded", () => {
+    setFontSize('font-medium');
+  });
+</script>
+<script src="js/nav-active.js" defer></script>
+
+</body>
+</html>

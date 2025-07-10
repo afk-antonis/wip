@@ -1,0 +1,423 @@
+/* ======================
+   Base Styles
+====================== */
+
+@font-face {
+  font-family: 'AntoniadisBasic';
+  src: url('../fonts/AntoniadisBasic-Regular.woff2') format('woff2'),
+       url('../fonts/AntoniadisBasic-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AntoniadisBasic';
+  src: url('../fonts/AntoniadisBasic-Bold.woff2') format('woff2'),
+       url('../fonts/AntoniadisBasic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AntoniadisBasic';
+  src: url('../fonts/AntoniadisBasic-Italic.woff2') format('woff2'),
+       url('../fonts/AntoniadisBasic-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+body {
+  font-family: 'AntoniadisBasic', sans-serif;
+  font-size: 20px;
+  margin: 20px;
+  padding: 0;
+  height: 100%;
+  background: #fefefe url("../img/") no-repeat center center;
+  color: rgb(205, 4, 4);
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ======================
+   Navigation
+====================== */
+
+nav {
+  position: relative;
+  z-index: 10;
+  margin: 20px 0 30px;
+  text-align: right;
+  padding-right: 10px;
+  font-family: inherit;
+}
+
+nav a {
+  margin: 0 20px 0 15px;
+  text-decoration: none;
+  color: #008cff;
+  font-weight: 600;
+  font-size: 36px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+nav a.active {
+  color: transparent;
+  font-weight: 700;
+  background: linear-gradient(
+    120deg,
+    #000 10%,
+    rgb(205, 4, 4) 30%,
+    rgb(100, 0, 0) 50%,
+    rgb(205, 4, 4) 70%,
+    #000 90%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: bloodFlow 5s alternate infinite;
+  transform: scale(1.1);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+  color: transparent;
+  font-weight: 700;
+  background: linear-gradient(
+    120deg,
+    #000 10%,
+    rgb(205, 4, 4) 30%,
+    rgb(100, 0, 0) 50%,
+    rgb(205, 4, 4) 70%,
+    #000 90%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: bloodFlow 5s alternate infinite;
+  transform: scale(1.1);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+nav a:focus,
+.font-size-controls button:focus {
+  outline: none;
+  outline-offset: 2px;
+}
+
+@keyframes bloodFlow {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav a:hover {
+    animation: none;
+    transform: none;
+  }
+
+  .blood-bar-fill {
+    animation: none;
+  }
+}
+
+/* ======================
+   Content
+====================== */
+
+header {
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.1em;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+img {
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* ======================
+   Custom Lists
+====================== */
+
+ul.custom-bullets {
+  list-style-image: url("../img/wolke.png");
+}
+
+.image-bullets {
+  list-style: none;
+  padding-left: 0;
+}
+
+.image-bullets li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+.image-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  background: url("../img/wolke.png") no-repeat center/contain;
+}
+
+/* ======================
+   Image Gallery
+====================== */
+
+.image-gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0;
+  justify-content: center;
+}
+
+.image-gallery li img {
+  border-radius: 8px;
+  transition: transform 0.2s ease, filter 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.image-gallery li img:hover {
+  transform: scale(1.03);
+  filter: grayscale(0%);
+  cursor: pointer;
+}
+
+/* ======================
+   Lightbox Fixes
+====================== */
+
+.lb-outerContainer, .lb-container, .lb-image {
+  width: 900px !important;
+  height: 600px !important;
+  min-width: 900px !important;
+  min-height: 600px !important;
+  max-width: 90vw !important;
+  max-height: 80vh !important;
+  object-fit: cover !important;
+}
+
+@media (max-width: 768px) {
+  .lb-outerContainer, .lb-container, .lb-image {
+    width: 90vw !important;
+    height: 64vw !important; /* 700x500 ratio */
+  }
+}
+
+.lb-caption {
+  font-size: 16px;
+  color: #eee;
+  text-align: left;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: none;
+}
+
+.lb-data {
+  text-align: center;
+}
+
+.lb-dataContainer {
+  position: relative;
+  bottom: -20px;
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ======================
+   Blood Bar
+====================== */
+
+.blood-bar-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 10px 0;
+  background: transparent;
+}
+
+.blood-bar-container {
+  position: relative;
+  margin: 0 auto;
+  width: 50%;
+  max-width: 1000px;
+  height: 10px;
+  background: transparent;
+  border: 2px solid #500;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 8px #a00;
+}
+
+.blood-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, rgb(205, 4, 4), #800000);
+  box-shadow: inset 0 0 10px rgb(205, 4, 4), 0 0 10px rgb(205, 4, 4);
+  transition: width 0.5s ease;
+  animation: pulse 2s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blood-percentage {
+  color: white;
+  font-weight: inherit;
+  text-shadow: 0 0 5px red;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(205, 4, 4, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(205, 4, 4, 1);
+  }
+}
+
+/* ======================
+   Footer
+====================== */
+
+footer, #footer-placeholder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 30px 20px;
+  font-size: 16px;
+  color: rgb(205, 4, 4);
+  background: transparent;
+}
+
+footer .social-links {
+  margin-top: -10px;
+}
+
+footer .social-links a {
+  margin: 0 10px;
+  display: inline-table;
+  transition: transform 0.1s ease;
+}
+
+footer .social-links a:hover {
+  transform: scale(1.2);
+}
+
+footer .social-links img {
+  width: 16px;
+  height: 16px;
+  filter: drop-shadow(0 0 2px #cd0404);
+  transition: filter 0.3s ease;
+}
+
+footer .social-links a:hover img {
+  filter: drop-shadow(0 0 6px #cd0404) drop-shadow(0 0 10px #cd0404);
+}
+/* ======================
+   Font Size Presets
+====================== */
+body.font-small {
+  font-size: 16px;
+}
+
+body.font-medium {
+  font-size: 20px; /* default */
+}
+
+body.font-large {
+  font-size: 24px;
+}
+
+
+/* ======================
+   Floating Nav Wrapper
+====================== */
+.floating-nav-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgba(205, 4, 4, 0.4);
+  box-shadow: 0 0 8px rgba(205, 4, 4, 0.3);
+  padding: 12px 16px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+/* Use your existing nav styles inside it */
+.floating-nav-wrapper nav {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.floating-nav-wrapper nav a {
+  font-size: 24px; /* Slightly smaller than main site nav */
+}
+
+/* ======================
+   Font Size Control (Restyled)
+====================== */
+.font-size-controls {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-family: sans-serif;
+  font-size: 12px;
+  box-shadow: 0 0 5px rgba(205, 4, 4, 0.4);
+}
+
+.font-size-controls button {
+  background: rgb(205, 4, 4);
+  border: none;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: sans-serif;
+  transition: background 0.2s ease;
+}
+
+.font-size-controls button:hover {
+  background: rgb(120, 0, 0);
+}

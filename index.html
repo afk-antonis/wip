@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="antonis antoniadis site" />
+  <title>antonis antoniadis</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Background map iframe -->
+  <iframe
+    id="map-bg"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d68.396696003736!2d4.816193483354865!3d43.95167958517097!2m3!1f180!2f39.57098695771198!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x12b5ed0d36441063%3A0xe91ef05456c27f7d!2sSchool%20International%20Theater%20Jacques%20Lecoq!5e1!3m2!1sen!2sgr!4v1751829300811!5m2!1sen!2sgr"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; border: none; z-index: 1; pointer-events: none; filter: brightness(0.7);">
+  </iframe>
+
+  <!-- Navigation -->
+  <div id="nav-container" style="z-index: 999; position: relative;"></div>
+  <script>
+    fetch("nav.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("nav-container").innerHTML = data;
+      });
+  </script>
+  <noscript>
+    <p>Please enable JavaScript to view the navigation menu.</p>
+  </noscript>
+
+  <!-- Page Content -->
+  <div class="content" style="position: relative; z-index: 10; color: white; padding: 20px;">
+    <header>
+      <h1></h1>
+      <p><br /></p>
+    </header>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch("assets/includes/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+  <noscript>
+    <p>Please enable JavaScript to view the footer content.</p>
+  </noscript>
+
+  <!-- Font size control logic -->
+  <script>
+    function setFontSize(sizeClass) {
+      document.body.classList.remove('font-small', 'font-medium', 'font-large');
+      document.body.classList.add(sizeClass);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      setFontSize('font-medium');
+    });
+  </script>
+  <script src="js/nav-active.js" defer></script>
+
+</body>
+</html>

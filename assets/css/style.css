@@ -46,6 +46,7 @@ body::-webkit-scrollbar {
 ====================== */
 
 nav {
+font-family: sans-serif;
   position: relative;
   z-index: 10;
   margin: 20px 0 30px;

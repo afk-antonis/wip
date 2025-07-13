@@ -46,7 +46,6 @@ body::-webkit-scrollbar {
 ====================== */
 
 nav {
-font-family: sans-serif !important;
   position: relative;
   z-index: 10;
   margin: 20px 0 30px;
@@ -56,7 +55,6 @@ font-family: sans-serif !important;
 }
 
 nav a {
-  font-family: sans-serif;
   margin: 0 20px 0 15px;
   text-decoration: none;
   color: #008cff;

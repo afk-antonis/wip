@@ -15,14 +15,28 @@
   <button onclick="setFontSize('font-large')">A+</button>
   </div>
 
-  <div id="nav-container"></div>
-  <script>
-    fetch("nav.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav-container").innerHTML = data;
+ <div id="nav-container"></div>
+
+<script>
+  fetch("nav.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("nav-container").innerHTML = data;
+
+      // ✅ After nav is injected, run this to activate the link
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+      const navLinks = document.querySelectorAll("nav a");
+
+      navLinks.forEach(link => {
+        const href = link.getAttribute("href").split("?")[0].split("#")[0];
+        if (href === currentPage) {
+          link.classList.add("active");
+        }
       });
-  </script>
+    });
+</script>
+
+
   <noscript>
     <p>Please enable JavaScript to view the navigation menu.</p>
   </noscript>
@@ -73,7 +87,5 @@
     setFontSize('font-medium');
   });
 </script>
-<script src="/assets/js/nav-active.js" defer></script>
-
 </body>
 </html>

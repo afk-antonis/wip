@@ -1,12 +1,11 @@
-// nav-active.js
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const navLinks = document.querySelectorAll("nav a");
 
-document.addEventListener('DOMContentLoaded', () => {
-  const page = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('nav a').forEach(link => {
-    const linkPage = link.getAttribute('href');
-    if (linkPage === page) {
-      link.classList.add('active');
+  navLinks.forEach(link => {
+    const href = link.getAttribute("href").split("?")[0].split("#")[0];
+    if (href === currentPage) {
+      link.classList.add("active");
     }
   });
 });
-

@@ -3,30 +3,12 @@
   <button onclick="setFontSize('font-medium')" style="font-family: sans-serif;">A</button>
   <button onclick="setFontSize('font-large')" style="font-family: sans-serif;">A+</button>
 </div>
-
+<div class="floating-nav-wrapper">
 <nav>
-  <a href="index.html">HOme</a>
-  <a href="about.html">abOUT</a>
-  <a href="work.html">wORK</a>
-  <a href="cv.html">C.v.</a>
-  <a href="contact.html">ContACT</a>
+  <a href="index.html">home</a>
+  <a href="about.html">about</a>
+  <a href="work.html">work</a>
+  <a href="cv.html">c.v</a>
+  <a href="contact.html">contact</a>
 </nav>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    let currentPage = window.location.pathname.split('/').pop();
-
-    if (!currentPage) {
-      currentPage = 'index.html'; // fallback for root path
-    }
-
-    const navLinks = document.querySelectorAll('nav a');
-
-    navLinks.forEach(link => {
-      let linkPage = link.getAttribute('href').split('?')[0].split('#')[0];
-      if (linkPage === currentPage) {
-        link.classList.add('active');
-      }
-    });
-  });
-</script>
+</div>

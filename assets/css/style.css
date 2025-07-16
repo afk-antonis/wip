@@ -30,11 +30,19 @@ body {
   font-family: 'AntoniadisBasic', sans-serif;
   font-size: 20px;
   margin: 20px;
+  margin-bottom: 0 !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: auto;
   padding: 0;
   height: 100%;
   background: #fefefe url("../img/") no-repeat center center;
   color: rgb(205, 4, 4);
   overflow-y: scroll;
+   /* ... other styles ... */
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 body::-webkit-scrollbar {
@@ -61,7 +69,7 @@ nav a {
   position: relative;
   margin: 0 0px 0 0px;
   text-decoration: none;
-  color: rgb(0, 140, 255);
+  color: rgb(21, 0, 255);
   font-weight: 500;
   font-size: 18px !important;
   display: inline-block;
@@ -190,6 +198,8 @@ ul.custom-bullets {
 ====================== */
 
 .image-gallery {
+  position: relative;
+  top: 40px;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -266,6 +276,9 @@ ul.custom-bullets {
   z-index: 999;
   padding: 10px 0px;
   background: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .blood-bar-container {
@@ -273,6 +286,9 @@ ul.custom-bullets {
   margin: 0 auto;
   width: 15%;
   max-width: 1000px;
+  right: 0px;
+  margin-right: 20px;
+  position: relative;
   height: 10px;
   background: transparent;
   border: 2px solid #500;
@@ -315,26 +331,34 @@ ul.custom-bullets {
 ====================== */
 
 footer, #footer-placeholder {
+  /* ... other styles ... */
   width: 100%;
+  position: static;
+  margin-bottom: 0 !important;
   display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   text-align: center;
-  box-sizing: border-box;
-  padding: 30px 20px;
+  box-sizing:inherit;
+  padding: 0px 0px;
   font-size: 16px;
   color: rgb(205, 4, 4);
   background: transparent;
 }
 
-footer .social-links {
-  margin-top: -10px;
+footer .social-links { 
+  margin-top: -11px;
 }
 
 footer .social-links a {
-  margin: 0 10px;
-  display: inline-table;
-  transition: transform 0.1s ease;
+  margin: 0px 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+   transition: transform 0.1s ease;
 }
 
 footer .social-links a:hover {
@@ -342,14 +366,30 @@ footer .social-links a:hover {
 }
 
 footer .social-links img {
-  width: 16px;
   height: 16px;
-  filter: drop-shadow(0 0 2px #cd0404);
+  width: 16px; display: flex;
+  justify-content: center;
+  align-items: center;
   transition: filter 0.3s ease;
 }
 
 footer .social-links a:hover img {
-  filter: drop-shadow(0 0 6px #cd0404) drop-shadow(0 0 10px #cd0404);
+  filter: drop-shadow(0 0 1px #cd0404) drop-shadow(0 0 6px #cd0404);
+
+  background: linear-gradient(
+    120deg,
+    #000 10%,
+    rgb(205, 4, 4) 30%,
+    rgb(100, 0, 0) 50%,
+    rgb(205, 4, 4) 70%,
+    #000 90%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: bloodFlow 5s alternate infinite, bloodTechPulse 1.5s infinite alternate;
+  transform: scale(1.1);
+  text-shadow: none;
 }
 /* ======================
    Font Size Presets
@@ -366,6 +406,54 @@ body.font-large {
   font-size: 24px;
 }
 
+/* ======================
+   Home Button
+====================== */
+
+.home-button {
+  
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+  #home-button-container {
+  position: fixed;
+  top: 20px; /* 60px (nav height) + 20px (font size controls top margin) */
+  left: calc(50% - 50px); /* adjust the value 150px to match the width of the button */
+  z-index: 999;
+  width: 50px; /* adjust this value to match the width of the button PNG */
+  height: 50px; /* adjust this value to match the height of the button PNG */
+  justify-content: center;
+  align-items: center;
+}
+.home-button img {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 2px #cd0404);
+  transition: filter 0.3s ease;
+  
+}
+.home-button:hover img, .home-button a.active {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 6px #cd0404) drop-shadow(0 0 10px #cd0404);
+
+  background: linear-gradient(
+    120deg,
+    #000 10%,
+    rgb(205, 4, 4) 30%,
+    rgb(100, 0, 0) 50%,
+    rgb(205, 4, 4) 70%,
+    #000 90%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: bloodFlow 5s alternate infinite, bloodTechPulse 1.5s infinite alternate;
+  transform: scale(1.1);
+  text-shadow: none;}
 
 /* ======================
    Floating Nav Wrapper
@@ -374,12 +462,11 @@ body.font-large {
   position: fixed;
   top: 20px;
   right: 20px;
+  left: inherit;
   z-index: 1000;
   display: flex;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 5px rgba(205, 4, 4, 0.4);
-  padding: 5px 10px;
+  padding: 5px 20px;
   border-radius: 8px;
   font-size: 12px !important;
   backdrop-filter: blur(0px);
@@ -406,16 +493,14 @@ body.font-large {
   z-index: 1000;
   display: flex;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.7);
   padding: 5px 10px;
   border-radius: 8px;
   font-family: sans-serif;
   font-size: 12px;
-  box-shadow: 0 0 5px rgba(205, 4, 4, 0.4);
 }
 
 .font-size-controls button {
-  background: rgb(205, 4, 4);
+  background: rgb(205, 4, 4, 0.6);
   border: none;
   color: white;
   padding: 3px 6px;

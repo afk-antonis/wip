@@ -8,7 +8,14 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
+<div id="home-button-container"></div>
+ <script>
+  fetch('/assets/includes/home-button.html')
+   .then(res => res.text())
+    .then(data => {
+      document.getElementById("home-button-container").innerHTML = data;
+    });
+</script>
   <div id="nav-container"></div>
 
 <script>
@@ -67,6 +74,10 @@
       <h2>music</h2>
       <audio controls>
         <source src="assets/audio/askese.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <audio controls>
+        <source src="assets/audio/kirsos.mp3" type="audio/mp3">
         Your browser does not support the audio element.
       </audio>
     </section>

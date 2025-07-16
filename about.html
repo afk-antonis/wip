@@ -8,7 +8,14 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
+<div id="home-button-container"></div>
+ <script>
+  fetch('/assets/includes/home-button.html')
+   .then(res => res.text())
+    .then(data => {
+      document.getElementById("home-button-container").innerHTML = data;
+    });
+</script>
   <div class="font-size-controls">
   <button onclick="setFontSize('font-small')">A−</button>
   <button onclick="setFontSize('font-medium')">A</button>
@@ -62,8 +69,27 @@
         freelancer. I have also made music for performances and translations.<br>
       </p>
     </section>
+    <div class="blood-bar-wrapper">
+    <div class="blood-bar-container">
+      <div class="blood-bar-fill" id="bloodFill">
+        <span class="blood-percentage" id="bloodPercent">0%</span>
+      </div>
+    </div>
+  </div>
   </main>
+ <script>
+    const fill = document.getElementById("bloodFill");
+    const percent = document.getElementById("bloodPercent");
 
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.min(100, Math.round((scrollTop / docHeight) * 100));
+      
+      fill.style.width = scrollPercent + "%";
+      percent.textContent = scrollPercent + "%";
+    });
+  </script>
   <div id="footer-placeholder"></div>
   <script>
     fetch("assets/includes/footer.html")

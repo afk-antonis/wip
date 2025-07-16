@@ -11,10 +11,21 @@
     section {
       font-family: sans-serif;
     }
+    body {
+      background-image: url(assets/img/asciimask.png);
+    background-size:31%;
+  background-position: top center;}
   </style>
 </head>
 <body>
-
+ <div id="home-button-container"></div>
+ <script>
+  fetch('/assets/includes/home-button.html')
+   .then(res => res.text())
+    .then(data => {
+      document.getElementById("home-button-container").innerHTML = data;
+    });
+</script>
  <div id="nav-container"></div>
 
 <script>
@@ -40,25 +51,43 @@
 
   <main>
     <header>
-      <h1>Contact</h1>
+      <h1></h1>
     </header>
 
     <section>
-      <p><a href="mailto:toniadis@protonmail.com" target="_blank" rel="noopener noreferrer">Email</a></p>
-      <p><a href="https://www.instagram.com/dj_feta/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
-      <p><a href="https://andone.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a></p>
-      <p><a href="https://soundcloud.com/antonis_antoniadis" target="_blank" rel="noopener noreferrer">SoundCloud</a></p>
+      <p><a href="mailto:toniadis@protonmail.com" target="_blank" rel="noopener noreferrer">email</a></p>
+      <p><a href="https://www.instagram.com/dj_feta/" target="_blank" rel="noopener noreferrer">instagram</a></p>
+      <p><a href="https://andone.bandcamp.com/" target="_blank" rel="noopener noreferrer">bandcamp</a></p>
+      <p><a href="https://soundcloud.com/antonis_antoniadis" target="_blank" rel="noopener noreferrer">soundcloud</a></p>
     </section>
+    <section>
+      <p style="font-size: 100px; font-family: AntoniadisBasic; text-align:justify;">
+        ☼
+      </p>
+    </section>
+    <div class="blood-bar-wrapper">
+    <div class="blood-bar-container">
+      <div class="blood-bar-fill" id="bloodFill">
+        <span class="blood-percentage" id="bloodPercent">0%</span>
+      </div>
+    </div>
+  </div>
   </main>
 
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch("assets/includes/footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
+   <script>
+    const fill = document.getElementById("bloodFill");
+    const percent = document.getElementById("bloodPercent");
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.min(100, Math.round((scrollTop / docHeight) * 100));
+      
+      fill.style.width = scrollPercent + "%";
+      percent.textContent = scrollPercent + "%";
+    });
   </script>
+  
   <script>
   function setFontSize(sizeClass) {
     document.body.classList.remove('font-small', 'font-medium', 'font-large');
@@ -70,5 +99,14 @@
     setFontSize('font-medium');
   });
 </script>
+<div id="footer-placeholder"></div>
+  <script>
+    fetch("assets/includes/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+  
 </body>
 </html>

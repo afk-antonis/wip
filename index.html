@@ -8,101 +8,137 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
     html, body {
-  height: 100%;
-  margin: 0;
-}
+      height: 100%;
+      margin: 0;
+    }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: 'AntoniadisBasic', sans-serif;
+      background-image: url("assets/img/Kyriaki Moutafi.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: unset;
+    }
 
-.page-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    .page-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-  body { 
-    background-image: url(assets/img/Kyriaki\ Moutafi.jpg);
-    min-height: unset;
-  }
+    /* Make iframe fill viewport and sit behind content */
+    #map-bg {
+      position: fixed;
+      top: 0;
+      left: 30px;
+      width: 60vh;
+      height: 60vh;
+      border: none;
+      border-radius: 15px;
+      margin-top: 100px;
+      z-index: 1;
+      pointer-events: auto; /* allow interaction */
+      filter: brightness(0.5);
+      aspect-ratio: 16 / 9;
+    }
+
+    /* Content area styling */
+    .content {
+      position: relative;
+      z-index: 10;
+      color: white;
+      padding: 20px;
+    }
+
+    nav a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-
   <!-- Background map iframe -->
   <iframe
     id="map-bg"
+    title="School International Theater Jacques Lecoq"
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d68.396696003736!2d4.816193483354865!3d43.95167958517097!2m3!1f180!2f39.57098695771198!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x12b5ed0d36441063%3A0xe91ef05456c27f7d!2sSchool%20International%20Theater%20Jacques%20Lecoq!5e1!3m2!1sen!2sgr!4v1751829300811!5m2!1sen!2sgr"
     allowfullscreen
     loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; border: none; margin-top: -130px; z-index: 1; pointer-events: visibleFill; filter: brightness(0.5);">
+    referrerpolicy="no-referrer-when-downgrade">
   </iframe>
-  
-<div id="home-button-container"></div>
- <script>
-  fetch('/assets/includes/home-button.html')
-   .then(res => res.text())
-    .then(data => {
-      document.getElementById("home-button-container").innerHTML = data;
-    });
-</script>
+
+  <div id="home-button-container"></div>
+  <script defer>
+    fetch('/assets/includes/home-button.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("home-button-container").innerHTML = data;
+      });
+  </script>
+
   <!-- Navigation -->
   <div id="nav-container"></div>
+  <script defer>
+    fetch("nav.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("nav-container").innerHTML = data;
 
-<script>
-  fetch("nav.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("nav-container").innerHTML = data;
+        // Highlight current nav link
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll("nav a");
 
-      // ✅ After nav is injected, run this to activate the link
-      const currentPage = window.location.pathname.split("/").pop() || "index.html";
-      const navLinks = document.querySelectorAll("nav a");
-
-      navLinks.forEach(link => {
-        const href = link.getAttribute("href").split("?")[0].split("#")[0];
-        if (href === currentPage) {
-          link.classList.add("active");
-        }
+        navLinks.forEach(link => {
+          const href = link.getAttribute("href").split("?")[0].split("#")[0];
+          if (href === currentPage) {
+            link.classList.add("active");
+          }
+        });
       });
-    });
-</script>
-
+  </script>
 
   <noscript>
     <p>Please enable JavaScript to view the navigation menu.</p>
   </noscript>
 
   <!-- Page Content -->
-<div class="page-wrapper">
-  <div class="content" style="position: relative; z-index: 10; color: white; padding: 20px;">
-    <header>
-      <h1></h1>
-      <p><br /></p>
-    </header>
+  <div class="page-wrapper">
+    <main class="content">
+      <header class="marquee-container" style="text-align: center; margin-top: 200px; color: rgb(240, 4, 4);">
+        <div class="marquee-content" style="font-size: 30px; font-weight:700;"> 
+          γιατί οι νεκροί κάνουν γκριμάτσες / 
+          κάτω από λινάτσες οι φάτσες, τα μπράτσα πέφτουν /
+          η φάρσα είχε γίνει ο χρόνος κλείνει /
+          πόσο κοστίζει ένα γιγαμπάιτ που σβήνει /
+          από τη Σμύρνη τι έχει απομείνει;</div>
+        <p></p> 
+      </header>
+      <!-- Additional page-specific content can go here -->
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
   </div>
 
-  <!-- Footer -->
-  <div id="footer-placeholder"></div>
-</div>
-  <script>
+  <script defer>
     fetch("assets/includes/footer.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
       });
   </script>
+
   <noscript>
     <p>Please enable JavaScript to view the footer content.</p>
   </noscript>
 
   <!-- Font size control logic -->
-  <script>
+  <script defer>
     function setFontSize(sizeClass) {
       document.body.classList.remove('font-small', 'font-medium', 'font-large');
       document.body.classList.add(sizeClass);

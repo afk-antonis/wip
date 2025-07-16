@@ -65,7 +65,7 @@ nav a {
   font-weight: 500;
   font-size: 18px !important;
   display: inline-block;
-  letter-spacing: 0.0px;
+  letter-spacing: 0.1px;
   background: transparent;
   filter: drop-shadow(0 0 2px rgba(205, 4, 4, 0.6));
   transition: all 0.3s ease;

@@ -10,6 +10,7 @@
     html, body {
       height: 100%;
       margin: 0;
+      overflow-x: hidden;
     }
 
     body {
@@ -59,6 +60,33 @@
       font-weight: bold;
       text-decoration: underline;
     }
+       /* Responsive layout adjustments */
+  @media (min-width: 768px) {
+    .page-wrapper {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+
+
+    main.content {
+      padding-left: 450px; /* Leave space for map */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .marquee-container {
+      font-size: 1rem;
+    }
+
+    #map-bg {
+      display: none;
+    }
+
+    main.content {
+      padding: 1rem;
+    }
+  }
+
   </style>
 </head>
 <body>
@@ -110,7 +138,7 @@
   <div class="page-wrapper">
     <main class="content">
       <header class="marquee-container" style="text-align: center; margin-top: 200px; color: rgb(240, 4, 4);">
-        <div class="marquee-content" style="font-size: 30px; font-weight:700;"> 
+        <div class="marquee-content" style="font-size: 30px; font-weight:700;" lang="el"> 
           γιατί οι νεκροί κάνουν γκριμάτσες / 
           κάτω από λινάτσες οι φάτσες, τα μπράτσα πέφτουν /
           η φάρσα είχε γίνει ο χρόνος κλείνει /

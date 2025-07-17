@@ -270,16 +270,16 @@ footer .social-links a:hover img {
 }
 
 .home-button {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .home-button img {
-  width: 100%;
-  height: 100%;
+  width: 150%;
+  height: 150%;
   filter: drop-shadow(0 0 2px #cd0404);
   transition: filter 0.3s ease;
 }

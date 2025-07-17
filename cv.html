@@ -22,7 +22,7 @@
 <body>
 <div id="home-button-container"></div>
  <script>
-  fetch('/assets/includes/home-button.html')
+  fetch('assets/includes/home-button.html')
    .then(res => res.text())
     .then(data => {
       document.getElementById("home-button-container").innerHTML = data;

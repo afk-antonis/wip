@@ -140,7 +140,6 @@ nav a {
   font-weight: 600;
   font-size: 16px !important;
   display: list-item;
-  list-style-type: none;
   list-style:lower-greek;
   letter-spacing: 0px;
   background: transparent;
@@ -598,7 +597,10 @@ ul.custom-bullets {
     
   } 
  
-
+.hamburger:hover {
+  color: rgb(0, 123, 255);
+  
+}
 
 
 .hamburger span {
@@ -626,7 +628,7 @@ ul.custom-bullets {
 }
 
 .hamburger:hover span {
-  background-color: rgb(205, 4, 4);
+  background-color:  rgb(0, 123, 255);
 }
 
 .hamburger.active span:nth-child(1) {

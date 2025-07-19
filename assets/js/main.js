@@ -29,9 +29,13 @@ window.addEventListener("DOMContentLoaded", () => {
         });
 
         // Toggle menu visibility
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('mouseenter', () => {
           hamburger.classList.toggle('active');
           navMenu.classList.toggle('active');
+        });
+        hamburger.addEventListener('mouseleave', () => {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
         });
       });
 

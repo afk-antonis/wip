@@ -33,6 +33,13 @@
       document.getElementById("home-button-container").innerHTML = data;
     });
 </script>
+<button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
+  <span></span>
+    menu
+  <span></span>
+  <span></span>
+  </button>
+ <div id="nav-container"></div>
  <div id="nav-container"></div>
 
 <script>
@@ -40,7 +47,8 @@
     .then(res => res.text())
     .then(data => {
       document.getElementById("nav-container").innerHTML = data;
-
+ const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav');
       // ✅ After nav is injected, run this to activate the link
       const currentPage = window.location.pathname.split("/").pop() || "index.html";
       const navLinks = document.querySelectorAll("nav a");
@@ -50,7 +58,10 @@
         if (href === currentPage) {
           link.classList.add("active");
         }
-      });
+      });hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
     });
 </script>
 

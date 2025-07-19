@@ -16,12 +16,12 @@
       document.getElementById("home-button-container").innerHTML = data;
     });
 </script>
-  <div class="font-size-controls">
-  <button onclick="setFontSize('font-small')">A−</button>
-  <button onclick="setFontSize('font-medium')">A</button>
-  <button onclick="setFontSize('font-large')">A+</button>
-  </div>
-
+<button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
+  <span></span>
+    menu
+  <span></span>
+  <span></span>
+  </button>
  <div id="nav-container"></div>
 
 <script>
@@ -29,8 +29,9 @@
     .then(res => res.text())
     .then(data => {
       document.getElementById("nav-container").innerHTML = data;
-
-      // ✅ After nav is injected, run this to activate the link
+  const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav');
+    // ✅ After nav is injected, run this to activate the link
       const currentPage = window.location.pathname.split("/").pop() || "index.html";
       const navLinks = document.querySelectorAll("nav a");
 
@@ -39,8 +40,14 @@
         if (href === currentPage) {
           link.classList.add("active");
         }
-      });
+      });hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
     });
+  
+
+    });
+      
 </script>
 
 
@@ -50,7 +57,7 @@
 
   <main style="padding: 20px; ">
     <img 
-      src="assets/img/merenata.jpeg" 
+      src="assets/img/none" 
       alt="athena" 
       title="© Renata Kotti-Domprets" 
       width="600" 
@@ -63,7 +70,7 @@
     </header>
 
     <section>
-      <p>
+      <p style="font-family: 'Avenir';">
         I grew up in Athens, lived in Germany and France, where I studied acting and theatrical creation.<br>
         I have worked as an actor in ensemble theatres, in cinema and as a<br>
         freelancer. I have also made music for performances and translations.<br>

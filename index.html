@@ -18,7 +18,6 @@
       flex-direction: column;
       min-height: 100vh;
       font-family: 'AntoniadisBasic', sans-serif;
-      background-image: url("assets/img/Kyriaki Moutafi.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -31,7 +30,9 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
+.hamburger {
+  z-index: 11;
+}
     /* Make iframe fill viewport and sit behind content */
     #map-bg {
       position: fixed;
@@ -56,10 +57,6 @@
       padding: 20px;
     }
 
-    nav a.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
        /* Responsive layout adjustments */
   @media (min-width: 768px) {
     .page-wrapper {
@@ -108,26 +105,37 @@
         document.getElementById("home-button-container").innerHTML = data;
       });
   </script>
-
+<button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
+  <span></span>
+    menu
+  <span></span>
+  <span></span>
+  </button>
   <!-- Navigation -->
   <div id="nav-container"></div>
   <script defer>
-    fetch("nav.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("nav-container").innerHTML = data;
+     fetch("nav.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("nav-container").innerHTML = data;
+  const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav');
+    // ✅ After nav is injected, run this to activate the link
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+      const navLinks = document.querySelectorAll("nav a");
 
-        // Highlight current nav link
-        const currentPage = window.location.pathname.split("/").pop() || "index.html";
-        const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(link => {
+        const href = link.getAttribute("href").split("?")[0].split("#")[0];
+        if (href === currentPage) {
+          link.classList.add("active");
+        }
+      });hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  
 
-        navLinks.forEach(link => {
-          const href = link.getAttribute("href").split("?")[0].split("#")[0];
-          if (href === currentPage) {
-            link.classList.add("active");
-          }
-        });
-      });
+    });
   </script>
 
   <noscript>
@@ -138,7 +146,7 @@
   <div class="page-wrapper">
     <main class="content">
       <header class="marquee-container" style="text-align: center; margin-top: 200px; color: rgb(240, 4, 4);">
-        <div class="marquee-content" style="font-size: 30px; font-weight:700;" lang="el"> 
+        <div class="marquee-content" style="font-family: 'AvenirNext';font-size: 30px; font-weight:700;" lang="el"> 
           γιατί οι νεκροί κάνουν γκριμάτσες / 
           κάτω από λινάτσες οι φάτσες, τα μπράτσα πέφτουν /
           η φάρσα είχε γίνει ο χρόνος κλείνει /

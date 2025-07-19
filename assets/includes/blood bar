@@ -1,0 +1,20 @@
+<div class="blood-bar-wrapper">
+    <div class="blood-bar-container">
+      <div class="blood-bar-fill" id="bloodFill">
+        <span class="blood-percentage" id="bloodPercent">0%</span>
+      </div>
+    </div>
+
+    <script>
+    const fill = document.getElementById("bloodFill");
+    const percent = document.getElementById("bloodPercent");
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.min(100, Math.round((scrollTop / docHeight) * 100));
+      
+      fill.style.width = scrollPercent + "%";
+      percent.textContent = scrollPercent + "%";
+    });
+  </script>

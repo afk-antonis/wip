@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="antonis antoniadis site" />
   <title>antonis antoniadis</title>
+
   <link rel="stylesheet" href="assets/css/style.css" />
+
   <style>
     html, body {
       height: 100%;
@@ -16,12 +18,13 @@
     body {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
       font-family: 'AntoniadisBasic', sans-serif;
+       background-image: url('assets/img/indexback.jpeg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      min-height: unset;
+      overflow: hidden;
+      
     }
 
     .page-wrapper {
@@ -29,10 +32,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+     
     }
-.hamburger {
-  z-index: 11;
-}
+
+    .hamburger {
+      z-index: 11;
+    }
+
     /* Make iframe fill viewport and sit behind content */
     #map-bg {
       position: fixed;
@@ -44,7 +50,7 @@
       border-radius: 15px;
       margin-top: 100px;
       z-index: 1;
-      pointer-events: auto; /* allow interaction */
+      pointer-events: auto;
       filter: brightness(0.8);
       aspect-ratio: 16 / 9;
     }
@@ -57,36 +63,53 @@
       padding: 20px;
     }
 
-       /* Responsive layout adjustments */
-  @media (min-width: 768px) {
-    .page-wrapper {
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
+    /* Responsive layout adjustments */
+    @media (min-width: 768px) {
+      .page-wrapper {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+
+      main.content {
+        padding-left: 450px; /* Leave space for map */
+      }
     }
 
+    @media (max-width: 480px) {
+      .marquee-container {
+        font-size: 1rem;
+      }
 
-    main.content {
-      padding-left: 450px; /* Leave space for map */
+      #map-bg {
+        display: none;
+      }
+
+      main.content {
+        padding: 1rem;
+      }
     }
-  }
-
-  @media (max-width: 480px) {
-    .marquee-container {
-      font-size: 1rem;
-    }
-
-    #map-bg {
-      display: none;
-    }
-
-    main.content {
-      padding: 1rem;
-    }
-  }
-
   </style>
 </head>
+
 <body>
+  <div id="loader">
+  <p>♥</p>
+  </div>
+  <script>window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  const content = document.getElementById("page-content");
+ if (loader && content) {
+    setTimeout(() => {
+      loader.classList.add("fade-out");
+      content.classList.add("visible");
+      content.style.visibility = "visible";
+      setTimeout(() => loader.remove(), 3000); // match fade duration
+    }, 2000); // << stays for 2 seconds before fade starts
+ }} );
+ </script>
+  <div class="page-wrapper"></div>
+         <div id="page-content" style="visibility: hidden;">
+
   <!-- Background map iframe -->
   <iframe
     id="map-bg"
@@ -97,92 +120,53 @@
     referrerpolicy="no-referrer-when-downgrade">
   </iframe>
 
+  <!-- Home button include -->
   <div id="home-button-container"></div>
-  <script defer>
-    fetch('assets/includes/home-button.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("home-button-container").innerHTML = data;
-      });
-  </script>
-<button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
-  <span></span>
+ 
+  <!-- Hamburger button -->
+  <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
+    <span></span>
     menu
-  <span></span>
-  <span></span>
+    <span></span>
+    <span></span>
   </button>
-  <!-- Navigation -->
+
+  <!-- Navigation include -->
   <div id="nav-container"></div>
-  <script defer>
-     fetch("nav.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("nav-container").innerHTML = data;
-  const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('nav');
-    // ✅ After nav is injected, run this to activate the link
-      const currentPage = window.location.pathname.split("/").pop() || "index.html";
-      const navLinks = document.querySelectorAll("nav a");
 
-      navLinks.forEach(link => {
-        const href = link.getAttribute("href").split("?")[0].split("#")[0];
-        if (href === currentPage) {
-          link.classList.add("active");
-        }
-      });hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-  
-
-    });
-  </script>
 
   <noscript>
     <p>Please enable JavaScript to view the navigation menu.</p>
   </noscript>
 
   <!-- Page Content -->
-  <div class="page-wrapper">
+
+
     <main class="content">
       <header class="marquee-container" style="text-align: center; margin-top: 200px; color: rgb(240, 4, 4);">
-        <div class="marquee-content" style="font-family: 'AvenirNext';font-size: 30px; font-weight:700;" lang="el"> 
-          γιατί οι νεκροί κάνουν γκριμάτσες / 
+        <div class="marquee-content" style="font-family: 'AvenirNext'; font-size: 30px; font-weight: 500;" lang="el">
+          γιατί οι νεκροί κάνουν γκριμάτσες; / 
           κάτω από λινάτσες οι φάτσες, τα μπράτσα πέφτουν /
           η φάρσα είχε γίνει ο χρόνος κλείνει /
-          πόσο κοστίζει ένα γιγαμπάιτ που σβήνει /
-          από τη Σμύρνη τι έχει απομείνει;</div>
-        <p></p> 
+          πόσο κοστίζει ένα γιγαμπάιτ που σβήνει; /
+          από τη Σμύρνη τι έχει απομείνει;
+        </div>
+        <p></p>
       </header>
+
       <!-- Additional page-specific content can go here -->
     </main>
-
-    <!-- Footer -->
+       
+    <!-- Footer include -->
     <div id="footer-placeholder"></div>
   </div>
-
-  <script defer>
-    fetch("assets/includes/footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
-  </script>
-
+</div>
   <noscript>
     <p>Please enable JavaScript to view the footer content.</p>
   </noscript>
 
-  <!-- Font size control logic -->
-  <script defer>
-    function setFontSize(sizeClass) {
-      document.body.classList.remove('font-small', 'font-medium', 'font-large');
-      document.body.classList.add(sizeClass);
-    }
+  <!-- Font size control -->
 
-    window.addEventListener("DOMContentLoaded", () => {
-      setFontSize('font-medium');
-    });
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

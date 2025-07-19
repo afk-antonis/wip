@@ -5,68 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Contact information for antonis antoniadis" />
   <title>Contact</title>
-
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
     section {
       font-family: sans-serif;
     }
-    body {
-      background-image: url(assets/img/asciimask.png);
-    background-size:31%;
-  background-position: top center;}
-   @media (max-width: 480px) {
-    body {
-      background-image: url(assets/img/asciimask.png);
-      background-size: 50%;
-      background-position: top center;
+  
+    @media (max-width: 480px) {
+      body {
+        background-size: 50%;
+        background-position: top center;
+      }
     }
-  }
   </style>
 </head>
 <body>
- <div id="home-button-container"></div>
- <script>
-  fetch('assets/includes/home-button.html')
-   .then(res => res.text())
-    .then(data => {
-      document.getElementById("home-button-container").innerHTML = data;
-    });
-</script>
-<button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
-  <span></span>
+  <div id="home-button-container"></div>
+ 
+  <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
+    <span></span>
     menu
-  <span></span>
-  <span></span>
+    <span></span>
+    <span></span>
   </button>
- <div id="nav-container"></div>
- <div id="nav-container"></div>
 
-<script>
-  fetch("nav.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("nav-container").innerHTML = data;
- const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('nav');
-      // ✅ After nav is injected, run this to activate the link
-      const currentPage = window.location.pathname.split("/").pop() || "index.html";
-      const navLinks = document.querySelectorAll("nav a");
-
-      navLinks.forEach(link => {
-        const href = link.getAttribute("href").split("?")[0].split("#")[0];
-        if (href === currentPage) {
-          link.classList.add("active");
-        }
-      });hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-    });
-</script>
-
-
-
+  <div id="nav-container"></div>
+  
   <main>
     <header>
       <h1></h1>
@@ -78,53 +42,16 @@
       <p><a href="https://andone.bandcamp.com/" target="_blank" rel="noopener noreferrer">bandcamp</a></p>
       <p><a href="https://soundcloud.com/antonis_antoniadis" target="_blank" rel="noopener noreferrer">soundcloud</a></p>
     </section>
+
     <section>
-      <p style="font-size: 100px; font-family: AntoniadisBasic; text-align:justify;">
+      <p style="font-size: 100px; font-family: AntoniadisBasic; text-align: justify;">
         ☼
       </p>
     </section>
-    <div class="blood-bar-wrapper">
-    <div class="blood-bar-container">
-      <div class="blood-bar-fill" id="bloodFill">
-        <span class="blood-percentage" id="bloodPercent">0%</span>
-      </div>
-    </div>
-  </div>
   </main>
 
-   <script>
-    const fill = document.getElementById("bloodFill");
-    const percent = document.getElementById("bloodPercent");
+  <div id="footer-placeholder"></div>
 
-    window.addEventListener("scroll", () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = Math.min(100, Math.round((scrollTop / docHeight) * 100));
-      
-      fill.style.width = scrollPercent + "%";
-      percent.textContent = scrollPercent + "%";
-    });
-  </script>
-  
-  <script>
-  function setFontSize(sizeClass) {
-    document.body.classList.remove('font-small', 'font-medium', 'font-large');
-    document.body.classList.add(sizeClass);
-  }
-
-  // Optional: Set default
-  window.addEventListener("DOMContentLoaded", () => {
-    setFontSize('font-medium');
-  });
-</script>
-<div id="footer-placeholder"></div>
-  <script>
-    fetch("assets/includes/footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
-  </script>
-  
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

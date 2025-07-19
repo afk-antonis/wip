@@ -1,124 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="about antonis antoniadis">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="about antonis antoniadis" />
   <title>about</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
-<div id="home-button-container"></div>
- <script>
-  fetch('assets/includes/home-button.html')
-   .then(res => res.text())
-    .then(data => {
-      document.getElementById("home-button-container").innerHTML = data;
-    });
-</script>
-<button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
-  <span></span>
-    menu
-  <span></span>
-  <span></span>
-  </button>
- <div id="nav-container"></div>
-
-<script>
-  fetch("nav.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("nav-container").innerHTML = data;
-  const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('nav');
-    // ✅ After nav is injected, run this to activate the link
-      const currentPage = window.location.pathname.split("/").pop() || "index.html";
-      const navLinks = document.querySelectorAll("nav a");
-
-      navLinks.forEach(link => {
-        const href = link.getAttribute("href").split("?")[0].split("#")[0];
-        if (href === currentPage) {
-          link.classList.add("active");
-        }
-      });hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
+  <!-- Home Button Include -->
+  <div id="home-button-container"></div>
   
 
-    });
-      
-</script>
+  <!-- Hamburger Button -->
+  <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
+    <span></span>
+    menu
+    <span></span>
+    <span></span>
+  </button>
 
-
+  <!-- Navigation Include -->
+  <div id="nav-container"></div>
+ 
   <noscript>
     <p>Please enable JavaScript to view the navigation menu.</p>
   </noscript>
 
-  <main style="padding: 20px; ">
-    <img 
-      src="assets/img/none" 
-      alt="athena" 
-      title="© Renata Kotti-Domprets" 
-      width="600" 
-      height="auto" 
-      style="display: block;margin-top: 100px"
-    >
-
+  <!-- Main Content -->
+  <main style="padding: 20px;">
+    
     <header>
-      <h1>antonis antoniadis</h1>
+      <h1>Antonis Antoniadis</h1>
     </header>
 
     <section>
       <p style="font-family: 'Avenir';">
-        I grew up in Athens, lived in Germany and France, where I studied acting and theatrical creation.<br>
-        I have worked as an actor in ensemble theatres, in cinema and as a<br>
-        freelancer. I have also made music for performances and translations.<br>
+        Born in Athens, Greece, where I first had contact with theatre. I experienced the<br />
+        opening of a new dimension within this microcosm and I have been deeply influenced by<br />
+        the people working in Arts and Theatre in Athens between 2009 and 2015.<br /><br />
+        I went on to study Theatre at the University of the Arts in Berlin. There, <br />
+        I developed a relationship with the local theatre scene, mostly sourrounding<br />
+        the Volksbühne am Rosa-Luxemburg-Platz.  <br />
+        I have worked as an actor in ensemble theatres, in cinema and as a<br />
+        freelancer. I have also made music for performances and translations.<br />
       </p>
     </section>
-    <div class="blood-bar-wrapper">
-    <div class="blood-bar-container">
-      <div class="blood-bar-fill" id="bloodFill">
-        <span class="blood-percentage" id="bloodPercent">0%</span>
-      </div>
-    </div>
-  </div>
   </main>
- <script>
-    const fill = document.getElementById("bloodFill");
-    const percent = document.getElementById("bloodPercent");
 
-    window.addEventListener("scroll", () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = Math.min(100, Math.round((scrollTop / docHeight) * 100));
-      
-      fill.style.width = scrollPercent + "%";
-      percent.textContent = scrollPercent + "%";
-    });
-  </script>
+  <!-- Footer Include -->
   <div id="footer-placeholder"></div>
-  <script>
-    fetch("assets/includes/footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
+ 
 
-  </script>
   <noscript>
     <p>Please enable JavaScript to view the footer content.</p>
   </noscript>
-  <script>
-  function setFontSize(sizeClass) {
-    document.body.classList.remove('font-small', 'font-medium', 'font-large');
-    document.body.classList.add(sizeClass);
-  }
 
-  // Optional: Set default
-  window.addEventListener("DOMContentLoaded", () => {
-    setFontSize('font-medium');
-  });
-</script>
+  <!-- Font Size Control Script -->
+   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

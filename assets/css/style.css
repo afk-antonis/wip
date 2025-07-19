@@ -33,11 +33,17 @@
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'AvenirNext';
-  src: url('../fonts/Avenir-Next-Demi\ Italic.woff2') format('woff2'),
-       url('../fonts/Avenir-Next-Demi\ Italic.woff') format('woff');
+  src: url('../fonts/Avenir-Next-Thin\ Italic.woff2') format('woff2'),
+       url('../fonts/Avenir-Next-Thin\ Italic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AvenirNext';
+  src: url('../fonts/Avenir-Next-Medium\ Italic.woff2') format('woff2'),
+       url('../fonts/Avenir-Next-Medium\ Italic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
 }
@@ -267,6 +273,9 @@ footer,
 #footer-placeholder {
   width: 100%;
   position: static;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
   display: flex;
   flex-grow: 0;
   flex-shrink: 0;
@@ -630,4 +639,53 @@ ul.custom-bullets {
 
 .hamburger.active span:nth-child(3) {
   transform: translate(0%, -400%) rotate(0deg);
+}
+
+/* ======================
+   Loader
+====================== */
+
+#loader {
+  position: fixed;
+  bottom:0;
+  left: 50.66%;
+  background-size: cover;
+  background: transparent;
+  color: rgb(205, 4, 4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'AntoniadisBasic';
+  font-size: 24px;
+  z-index: 9999;
+  transition: opacity 2s ease;
+}
+@media (max-width: 480px) {
+      #loader {
+        left: 52%;
+      }
+    }
+#page-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s ease;
+}
+
+#page-content.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#loader p {
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
 }

@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
           hamburger.classList.toggle('active');
           navMenu.classList.toggle('active');
         });
-        hamburger.addEventListener('mouseleave', () => {
+        hamburger.addEventListener; navMenu.addEventListener('mouseleave', () => {
           hamburger.classList.remove('active');
           navMenu.classList.remove('active');
         });

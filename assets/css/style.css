@@ -69,7 +69,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #fefefe url("../img/") no-repeat center center;
+  background: #f4f3f1 url("../img/") no-repeat center center;
   color: rgb(205, 4, 4);
   overflow-y: scroll;
 }
@@ -151,7 +151,7 @@ nav a:hover,
 nav a.active {
   color: transparent;
   font-weight: 700;
-  background: linear-gradient(120deg, #000 10%, rgb(205, 4, 4) 30%, rgb(100, 0, 0) 50%, rgb(205, 4, 4) 70%, #000 90%);
+  background: linear-gradient(120deg, #000 10%, #cd0404 30%, rgb(100, 0, 0) 50%, rgb(205, 4, 4) 70%, #000 90%);
   background-size: 300% 100%;
   background-clip: text;
   -webkit-background-clip: text;

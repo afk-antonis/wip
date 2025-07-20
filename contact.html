@@ -8,16 +8,17 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
     section1 {
-      font-family: sans-serif;
+      font-family: 'Rag';
       display: flex;
   flex-wrap: wrap;
+  text-decoration:none;
   justify-content: center;
   align-items: flex-start;
   gap: 3rem;
   padding: 2rem;
     }
     section2 {
-      font-family: sans-serif;
+      font-family: 'Rag';
       display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -45,10 +46,9 @@
 <body>
   <div id="home-button-container"></div>
  
-  <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
+    <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Main menu">
     <span></span>
-    menu
-    <span></span>
+    <span class="menu-label" style="font-size: 24px;">home</span>
     <span></span>
   </button>
 
@@ -65,7 +65,7 @@
       <p><a href="https://andone.bandcamp.com/" target="_blank" rel="noopener noreferrer">bandcamp</a></p>
       <p><a href="https://soundcloud.com/antonis_antoniadis" target="_blank" rel="noopener noreferrer">soundcloud</a></p>
     </section1>
-    <h2 style="font-family: 'AntoniadisBasic';">contact me ☼</h2>
+    <h2 style="font-family: 'Rag';">contact me<b style="font-family: 'AntoniadisBasic';">☼</p></h2>
     <section2>
     
       <iframe 
@@ -88,7 +88,6 @@
   </main>
 
   <div id="footer-placeholder"></div>
-
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

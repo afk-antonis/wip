@@ -87,15 +87,15 @@
   src: url('../fonts/Rag-Bold.woff2') format('woff2'),
        url('../fonts/Rag-Bold.woff') format('woff');
   font-weight: 700;
-  font-style: normal; /* changed from 'bold' to 'normal' - font-style only 'normal' or 'italic' */
+  font-style: normal; 
 }
 
 @font-face {
   font-family: 'Rag';
   src: url('../fonts/Rag-Black.woff2') format('woff2'),
        url('../fonts/Rag-Black.woff') format('woff');
-  font-weight: 900; /* changed from 400 to 900, as black usually heavier */
-  font-style: normal; /* changed from 'black' to 'normal' - font-style does not accept 'black' */
+  font-weight: 900;
+  font-style: normal; 
 }
 
 /* ======================
@@ -166,7 +166,7 @@ a {
 /* Normal & visited links same color, no underline */
 a:link,
 a:visited {
-  color:#0000FF;
+  color:rgb(0, 123, 255);
   text-decoration: none;
   transition: color 0.3s ease; /* smooth color change */
 }
@@ -207,7 +207,7 @@ nav a {
   list-style: lower-greek;
   letter-spacing: 0;
   background: transparent;
-  filter: drop-shadow(0 0 2px rgba(0, 123, 255, 0.6));
+  filter: drop-shadow(0 0 2px #04cdcd);
   transition: all 0.3s ease;
 }
 

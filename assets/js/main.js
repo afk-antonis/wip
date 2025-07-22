@@ -77,14 +77,7 @@ function setupNavigation() {
   if (isMobile) {
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-
-      // Redirect to home after delay if menu is open
-      if (hamburger.classList.contains('active')) {
-        setTimeout(() => {
-          window.location.href = "index.html";
-        }, 400);
-      }
+      navMenu.classList.toggle('active');      
     });
   } else {
     hamburger.addEventListener('mouseenter', () => {

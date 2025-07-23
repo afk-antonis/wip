@@ -2,7 +2,6 @@
 // DOM Ready
 // ====================
 window.addEventListener("DOMContentLoaded", () => {
-  setFontSize('font-medium');
 
   // Load includes in sequence
   Promise.all([
